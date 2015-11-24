@@ -10,14 +10,15 @@
     </div>
 
     <script type="text/javascript">
-        var config = osdSettings({ // shared/openseadragon/settings.js
-            _id: "<?=$unique_id?>",
-            prefixUrl: "<?=$button_path?>"
-        });
-        var viewer = OpenSeadragon(config);
-        var ts = new OpenSeadragon.LegacyTileSource(<?php
-            echo openseadragon_create_pyramid($image); ?>);
-        viewer.openTileSource(ts);
+        OpenSeadragon({
+			id: "<?=$unique_id?>",
+			prefixUrl: "<?=$button_path?>",
+			showNavigator: true,
+			tileSources: {
+				type: 'legacy-image-pyramid',
+				levels:<?php echo openseadragon_create_pyramid($image); ?>
+			}
+		});
     </script>
     <?php endforeach; ?>
 </div>
