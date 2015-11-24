@@ -10,6 +10,7 @@
 					showNavigator: true,
 					minZoomImageRatio: 0.8,
 					maxZoomPixelRatio: 1.5,
+					defaultZoomLevel: 1,
 					tileSources: {
 						type: 'legacy-image-pyramid',
 						levels:<?php echo openseadragon_create_pyramid($images[0]); ?>
@@ -28,6 +29,7 @@
 					showNavigator: true,
 					minZoomImageRatio: 0.8,
 					maxZoomPixelRatio: 1.5,
+					defaultZoomLevel: 1,
 					sequenceMode: true,
 					showReferenceStrip: true,
 					referenceStripSizeRatio: .1,
