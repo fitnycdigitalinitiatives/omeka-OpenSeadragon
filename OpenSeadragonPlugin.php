@@ -19,6 +19,12 @@ class OpenSeadragonPlugin extends Omeka_Plugin_AbstractPlugin
 {
     const DEFAULT_VIEWER_EMBED = 1;
     
+    const DEFAULT_VIEWER_WIDTH = 500;
+    
+    const DEFAULT_VIEWER_HEIGHT = 600;
+
+    const DEFAULT_CSS_OVERRIDE = 1;
+    
     protected $_hooks = array(
         'install', 
         'uninstall', 
@@ -34,7 +40,12 @@ class OpenSeadragonPlugin extends Omeka_Plugin_AbstractPlugin
     
     protected $_options = array(
         'openseadragon_embed_admin' => self::DEFAULT_VIEWER_EMBED, 
+        'openseadragon_width_admin' => self::DEFAULT_VIEWER_WIDTH, 
+        'openseadragon_height_admin' => self::DEFAULT_VIEWER_HEIGHT, 
         'openseadragon_embed_public' => self::DEFAULT_VIEWER_EMBED, 
+        'openseadragon_css_override_public' => self::DEFAULT_CSS_OVERRIDE,
+        'openseadragon_width_public' => self::DEFAULT_VIEWER_WIDTH, 
+        'openseadragon_height_public' => self::DEFAULT_VIEWER_HEIGHT, 
     );
     
     /**
@@ -88,8 +99,19 @@ class OpenSeadragonPlugin extends Omeka_Plugin_AbstractPlugin
      */
     public function hookConfig()
     {
+        if (!is_numeric($_POST['openseadragon_width_admin']) || 
+            !is_numeric($_POST['openseadragon_height_admin']) || 
+            !is_numeric($_POST['openseadragon_width_public']) || 
+            !is_numeric($_POST['openseadragon_height_public'])) {
+            throw new Omeka_Validate_Exception('The width and height must be numeric.');
+        }
         set_option('openseadragon_embed_admin', (int) (boolean) $_POST['openseadragon_embed_admin']);
+        set_option('openseadragon_width_admin', $_POST['openseadragon_width_admin']);
+        set_option('openseadragon_height_admin', $_POST['openseadragon_height_admin']);
         set_option('openseadragon_embed_public', (int) (boolean) $_POST['openseadragon_embed_public']);
+        set_option('openseadragon_css_override_public', (int) (boolean) $_POST['openseadragon_css_override_public']);
+        set_option('openseadragon_width_public', $_POST['openseadragon_width_public']);
+        set_option('openseadragon_height_public', $_POST['openseadragon_height_public']);
     }
     
     /**
@@ -116,6 +138,25 @@ class OpenSeadragonPlugin extends Omeka_Plugin_AbstractPlugin
         echo $args['view']->openseadragon($args['item']->Files);
     }
 
+    private function _osd_css($width, $height)
+    {
+        return ".openseadragon { width: ".$width."px; height: ".$height."px};";
+    }
+
+    public function hookAdminHead($args)
+    {
+        $this->_head();
+        queue_css_string($this->_osd_css(get_option('openseadragon_width_admin'), get_option('openseadragon_height_admin')));
+    }
+
+    public function hookPublicHead($args)
+    {
+        $this->_head();
+        if (!get_option('openseadragon_css_override_public')) {
+            queue_css_string($this->_osd_css(get_option('openseadragon_width_public'), get_option('openseadragon_height_public')));
+        }
+    }
+
     /* 
      * Uses a pre-release version of OpenSeadragon to provide positioning of nav
      *
@@ -125,6 +166,7 @@ class OpenSeadragonPlugin extends Omeka_Plugin_AbstractPlugin
     {
         queue_css_file('openseadragon', 'screen', false, 'openseadragon');
         queue_js_file('openseadragon.min', 'openseadragon');
+        queue_js_file('settings', 'openseadragon');
     }
 
     public function openseadragon_pyramid($image, $size)
