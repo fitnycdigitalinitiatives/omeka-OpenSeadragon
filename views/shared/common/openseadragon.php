@@ -1,7 +1,6 @@
 <?php $button_path = src('images/', 'openseadragon');?>
 <?php $count = count($images); ?>
-<?php echo $count; ?>
-<?php if ($count = 0): ?>
+<?php if ($count == 1): ?>
 	<div class="openseadragon-frame">
 		<div class="openseadragon" id="osd-single">
 			<script type="text/javascript">
