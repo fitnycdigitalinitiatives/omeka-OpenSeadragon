@@ -30,11 +30,10 @@
 						<?php foreach($images as $image): ?>
 						{type: 'legacy-image-pyramid',
 						levels:<?php echo openseadragon_create_pyramid($image); ?>},
+						<?php endforeach; ?>
 					]
 				});
 			</script>
 		</div>
 	</div>
-<?php foreach($images as $image): ?>
-<?php endforeach; ?>
 <?php endif; ?>
