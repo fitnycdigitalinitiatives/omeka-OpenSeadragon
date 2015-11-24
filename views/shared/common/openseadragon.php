@@ -8,6 +8,8 @@
 					id: "osd-single",
 					prefixUrl: "<?=$button_path?>",
 					showNavigator: true,
+					minZoomImageRatio: 0.8,
+					maxZoomPixelRatio: 1.5,
 					tileSources: {
 						type: 'legacy-image-pyramid',
 						levels:<?php echo openseadragon_create_pyramid($images[0]); ?>
@@ -24,8 +26,13 @@
 					id: "osd-sequence",
 					prefixUrl: "<?=$button_path?>",
 					showNavigator: true,
+					minZoomImageRatio: 0.8,
+					maxZoomPixelRatio: 1.5,
 					sequenceMode: true,
 					showReferenceStrip: true,
+					referenceStripSizeRatio: .1,
+					previousButton: 'Previous',
+					nextButton: 'Next',
 					tileSources: [
 						<?php foreach($images as $image): ?>
 						{type: 'legacy-image-pyramid',
