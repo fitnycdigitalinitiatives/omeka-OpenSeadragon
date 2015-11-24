@@ -10,7 +10,7 @@
 					showNavigator: true,
 					tileSources: {
 						type: 'legacy-image-pyramid',
-						levels:<?php echo openseadragon_create_pyramid($image); ?>
+						levels:<?php echo openseadragon_create_pyramid($images[0]); ?>
 					}
 				});
 			</script>
@@ -18,10 +18,10 @@
 	</div>
 <?php else: ?>
 	<div class="openseadragon-frame">
-		<div class="openseadragon" id="osd-single">
+		<div class="openseadragon" id="osd-sequence">
 			<script type="text/javascript">
 				OpenSeadragon({
-					id: "osd-single",
+					id: "osd-sequence",
 					prefixUrl: "<?=$button_path?>",
 					showNavigator: true,
 					sequenceMode: true,
