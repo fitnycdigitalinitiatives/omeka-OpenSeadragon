@@ -27,7 +27,9 @@ class OpenSeadragonPlugin extends Omeka_Plugin_AbstractPlugin
         'config_form', 
         'config', 
         'admin_items_show', 
-        'public_items_show'
+        'public_items_show', 
+        'admin_head',
+        'public_head'
     );
     
     protected $_options = array(
