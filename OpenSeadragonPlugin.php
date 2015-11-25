@@ -140,7 +140,6 @@ class OpenSeadragonPlugin extends Omeka_Plugin_AbstractPlugin
     {
         queue_css_file('openseadragon', 'screen', false, 'openseadragon');
         queue_js_file('openseadragon.min', 'openseadragon');
-        queue_js_file('settings', 'openseadragon');
     }
 
     public function openseadragon_pyramid($image, $size)
