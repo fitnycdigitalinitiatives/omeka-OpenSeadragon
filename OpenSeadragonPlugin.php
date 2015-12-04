@@ -98,7 +98,10 @@ class OpenSeadragonPlugin extends Omeka_Plugin_AbstractPlugin
     public function hookAdminItemsShow($args)
     {
         // Embed viewer only if configured to do so.
-        echo $args['view']->openseadragon($args['item']->Files);
+        if (!get_option('openseadragon_embed_admin')) {
+            return;
+        }
+        echo __('Collection');
     }
     
     /**
