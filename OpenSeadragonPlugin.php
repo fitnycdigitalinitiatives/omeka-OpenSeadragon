@@ -25,15 +25,12 @@ class OpenSeadragonPlugin extends Omeka_Plugin_AbstractPlugin
         'initialize', 
         'upgrade', 
         'config_form', 
-        'config', 
-        'admin_items_show', 
-        'public_items_show', 
-        'admin_head',
+        'config',
+        'public_items_show',
         'public_head'
     );
     
     protected $_options = array(
-        'openseadragon_embed_admin' => self::DEFAULT_VIEWER_EMBED, 
         'openseadragon_embed_public' => self::DEFAULT_VIEWER_EMBED, 
     );
     
@@ -70,7 +67,6 @@ class OpenSeadragonPlugin extends Omeka_Plugin_AbstractPlugin
     {
         // Version 2.0 introduced image viewer embed flags.
         if (version_compare($args['old_version'], '2.0', '<')) {
-            set_option('openseadragon_embed_admin', self::DEFAULT_VIEWER_EMBED);
             set_option('openseadragon_embed_public', self::DEFAULT_VIEWER_EMBED);
         }
     }
@@ -88,20 +84,7 @@ class OpenSeadragonPlugin extends Omeka_Plugin_AbstractPlugin
      */
     public function hookConfig()
     {
-        set_option('openseadragon_embed_admin', (int) (boolean) $_POST['openseadragon_embed_admin']);
         set_option('openseadragon_embed_public', (int) (boolean) $_POST['openseadragon_embed_public']);
-    }
-    
-    /**
-     * Display the image viewer in admin items/show.
-     */
-    public function hookAdminItemsShow($args)
-    {
-        // Embed viewer only if configured to do so.
-        if (!get_option('openseadragon_embed_admin')) {
-            return;
-        }
-        echo __('Collection');
     }
     
     /**
@@ -119,11 +102,6 @@ class OpenSeadragonPlugin extends Omeka_Plugin_AbstractPlugin
     private function _osd_css($width, $height)
     {
         return ".openseadragon { width: ".$width."px; height: ".$height."px};";
-    }
-
-    public function hookAdminHead($args)
-    {
-        $this->_head();
     }
 
     public function hookPublicHead($args)

@@ -9,6 +9,8 @@ This plugin was originally based on the [ZoomIt plugin](https://github.com/omeka
 for Omeka, and the fork of that plugin used in the
 [DPLA Exhibitions](https://github.com/dpla/exhibitions) codebase.
 
+Has been updated by FIT with latest version of OpenSeadragon, and tailored more specifically to our needs.
+
 **Requirements**
 
 * Omeka 2.0 or higher
@@ -28,6 +30,8 @@ OpenSeadragon requires the image size to be stated explicitly for images in
 any image pyramid, we need to obtain the dimensions from each of the files,
 either through metadata stored in the Omeka database for each file, or through
 using either `gd` or `exif` functions.
+
+To manually embed viewer (for better placement), use <?php echo $this->openseadragon($item->Files); ?> in item show page.
 
 **Known issues:**
 
