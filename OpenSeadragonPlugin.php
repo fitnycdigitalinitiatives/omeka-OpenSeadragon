@@ -29,6 +29,10 @@ class OpenSeadragonPlugin extends Omeka_Plugin_AbstractPlugin
         'public_items_show',
         'public_head'
     );
+	
+	protected $_filters = array(
+        'exhibit_layouts',
+    );
     
     protected $_options = array(
         'openseadragon_embed_public' => self::DEFAULT_VIEWER_EMBED, 
@@ -123,5 +127,14 @@ class OpenSeadragonPlugin extends Omeka_Plugin_AbstractPlugin
     public function openseadragon_pyramid($image, $size)
     {
         return openseadragon_create_pyramid($image, $size);
+    }
+	
+	public function filterExhibitLayouts($layouts)
+    {
+        $layouts['exhibit-openseadragon'] = array(
+            'name' => __('OpenSeadragon Exhibit'),
+            'description' => __('Adds Openseadragon viewer to exhibit page')
+        );
+        return $layouts;
     }
 }
