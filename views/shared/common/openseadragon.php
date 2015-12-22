@@ -6,7 +6,7 @@
 		<div class="openseadragon" id="<?=$unique_id?>">
 			<script type="text/javascript">
 				OpenSeadragon({
-					id: "osd-single",
+					id: "<?=$unique_id?>",
 					prefixUrl: "<?=$button_path?>",
 					showNavigator: true,
 					navigatorSizeRatio: 0.1,
