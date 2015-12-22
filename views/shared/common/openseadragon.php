@@ -1,7 +1,7 @@
 <?php $button_path = src('images/', 'openseadragon');?>
 <?php $count = count($images); ?>
 <?php if ($count == 1): ?>
-	<?php $unique_id = "openseadragon_".hash("md4", html_escape($image->getWebPath('original'))); ?>
+	<?php $unique_id = "openseadragon_".hash("md4", html_escape($images[0]->getWebPath('original'))); ?>
 	<div class="openseadragon-frame">
 		<div class="openseadragon" id="<?=$unique_id?>">
 			<script type="text/javascript">
