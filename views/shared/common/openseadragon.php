@@ -3,11 +3,11 @@
 <?php if ($count == 1): ?>
 	<?php $unique_id = "openseadragon_".hash("md4", html_escape($images[0]->getWebPath('original'))); ?>
 	<div class="openseadragon-frame">
-		<div class="openseadragon" id="<?=$unique_id?>">
+		<div class="openseadragon" id="<?php echo $unique_id; ?>">
 			<script type="text/javascript">
 				OpenSeadragon({
-					id: "<?php echo $unique_id;?>",
-					prefixUrl: "<?php echo $button_path;?>",
+					id: "<?php echo $unique_id; ?>",
+					prefixUrl: "<?php echo $button_path; ?>",
 					showNavigator: true,
 					navigatorSizeRatio: 0.1,
 					minZoomImageRatio: 0.8,
@@ -29,7 +29,7 @@
 				OpenSeadragon.setString("Tooltips.PreviousPage","Previous");
 				OpenSeadragon({
 					id: "osd-sequence",
-					prefixUrl: "<?php echo $button_path;?>",
+					prefixUrl: "<?php echo $button_path; ?>",
 					showNavigator: true,
 					navigatorSizeRatio: 0.1,
 					minZoomImageRatio: 0.8,
