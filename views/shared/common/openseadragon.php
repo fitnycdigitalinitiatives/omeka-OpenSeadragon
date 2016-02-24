@@ -6,8 +6,8 @@
 		<div class="openseadragon" id="<?=$unique_id?>">
 			<script type="text/javascript">
 				OpenSeadragon({
-					id: "<?=$unique_id?>",
-					prefixUrl: "<?=$button_path?>",
+					id: "<?php echo $unique_id;?>",
+					prefixUrl: "<?php echo $button_path;?>",
 					showNavigator: true,
 					navigatorSizeRatio: 0.1,
 					minZoomImageRatio: 0.8,
@@ -29,7 +29,7 @@
 				OpenSeadragon.setString("Tooltips.PreviousPage","Previous");
 				OpenSeadragon({
 					id: "osd-sequence",
-					prefixUrl: "<?=$button_path?>",
+					prefixUrl: "<?php echo $button_path;?>",
 					showNavigator: true,
 					navigatorSizeRatio: 0.1,
 					minZoomImageRatio: 0.8,
