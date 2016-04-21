@@ -15,7 +15,7 @@ function openseadragon_create_flickr_pyramid($flickr_urls)
     for ($x = 1; $x <= 3; $x++) {
 		$index = $count - $x;
 		$url = array('url' => $flickr_urls[$index]['source']);
-		$dimensions = array('height' => $flickr_urls[$index]['height'], 'width' => $flickr_urls[$index]['width']);
+		$dimensions = array('height' => (int) $flickr_urls[$index]['height'], 'width' => (int) $flickr_urls[$index]['width']);
 		$pyramid[] = $url + $dimensions;
     }
     return json_encode($pyramid);
