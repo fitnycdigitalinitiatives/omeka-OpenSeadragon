@@ -7,6 +7,22 @@
  * @license http://www.gnu.org/licenses/gpl-3.0.txt GNU GPLv3
  */
 
+function openseadragon_create_flickr_pyramid($flickr_urls)
+{
+    $sizes = array('Medium', 'Large', 'Original');
+    $pyramid = array();
+    foreach ($sizes as $size) {
+        foreach ($flickr_urls as $flickr_url) {
+			if ($flickr_url['label'] == $size) {
+				$url = array('url' => $flickr_url['source']);
+				$dimensions = array('height' => $flickr_url['height'], 'width' => $flickr_url['width']);
+				$pyramid[] = $url + $dimensions;
+			}
+		}
+    }
+    return json_encode($pyramid);
+}
+
 function openseadragon_create_pyramid($image)
 {
     $sizes = array('original', 'fullsize', 'thumbnail');

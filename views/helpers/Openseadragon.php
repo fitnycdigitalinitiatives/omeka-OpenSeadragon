@@ -23,34 +23,21 @@ class OpenSeadragon_View_Helper_Openseadragon extends Zend_View_Helper_Abstract
      * @param int $height The height of the image viewer in pixels.
      * @return string|null
      */
-    public function openseadragon($files)
+    public function openseadragon($item)
     {
-        if (!is_array($files)) {
-            $files = array($files);
+        // Check for valid Flickr data.
+		if (metadata($item, array('Item Type Metadata', 'Flickr URL\'s'))) {
+            $flickr_urls = metadata($item, array('Item Type Metadata', 'Flickr URL\'s'));
+			$flickr_urls = json_decode(html_entity_decode($flickr_urls), true);
         }
 
-        // Filter out invalid images.
-        $images = array();
-        foreach ($files as $file) {
-            // A valid image must be a File record.
-            if (!($file instanceof File)) {
-                continue;
-            }
-            // A valid image must have a supported extension.
-            $extension = pathinfo($file->original_filename, PATHINFO_EXTENSION);
-            if (!in_array(strtolower($extension), $this->_supportedExtensions)) {
-                continue;
-            }
-            $images[] = $file;
-        }
-
-        // Return if there are no valid images.
-        if (!$images) {
+        // Return if there are no valid Flickr data.
+        else {
             return;
         }
 
         return $this->view->partial('common/openseadragon.php', array(
-            'images' => $images
+            'flickr_urls' => $flickr_urls
         ));
     }
 }
