@@ -11,7 +11,7 @@ function openseadragon_create_flickr_pyramid($flickr_urls)
 {
     $sizes = array('Medium', 'Large', 'Original');
     $pyramid = array();
-	$count = count($flickr_urls)
+	$count = count($flickr_urls);
     for ($x = 1; $x <= 3; $x++) {
 		$index = $count - 1;
 		$url = array('url' => $flickr_urls[$index]['source']);
