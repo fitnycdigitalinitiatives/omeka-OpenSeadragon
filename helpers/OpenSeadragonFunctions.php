@@ -11,14 +11,12 @@ function openseadragon_create_flickr_pyramid($flickr_urls)
 {
     $sizes = array('Medium', 'Large', 'Original');
     $pyramid = array();
-    foreach ($sizes as $size) {
-        foreach ($flickr_urls as $flickr_url) {
-			if ($flickr_url['label'] == $size) {
-				$url = array('url' => $flickr_url['source']);
-				$dimensions = array('height' => $flickr_url['height'], 'width' => $flickr_url['width']);
-				$pyramid[] = $url + $dimensions;
-			}
-		}
+	$count = count($flickr_urls)
+    for ($x = 1; $x <= 3; $x++) {
+		$index = $count - 1;
+		$url = array('url' => $flickr_urls[$index]['source']);
+		$dimensions = array('height' => $flickr_urls[$index]['height'], 'width' => $flickr_urls[$index]['width']);
+		$pyramid[] = $url + $dimensions;
     }
     return json_encode($pyramid);
 }
