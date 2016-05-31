@@ -11,8 +11,8 @@ function openseadragon_create_mdid_pyramid($record_name, $record_id, $width, $he
 {
     $sizes = array('Medium', 'Large', 'Original');
     $pyramid = array();
-	$url = 'https://fit.vrchost.com/media/get/' . $record_id . '/' . $record_name . '/';
-	$dimensions = array('height' => $height, 'width' => $width);
+	$url = array('url' => 'https://fit.vrchost.com/media/get/' . $record_id . '/' . $record_name . '/');
+	$dimensions = array('height' => (int) $height, 'width' => (int) $width);
 	$pyramid[] = $url + $dimensions;
     return json_encode($pyramid);
 }
