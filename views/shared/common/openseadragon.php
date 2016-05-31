@@ -9,7 +9,7 @@
 				showNavigator: true,
 				navigatorSizeRatio: 0.1,
 				minZoomImageRatio: 0.8,
-				maxZoomPixelRatio: 2,
+				maxZoomPixelRatio: 10,
 				controlsFadeDelay: 1000,
 				tileSources: {
 					type: 'legacy-image-pyramid',
