@@ -26,9 +26,7 @@ class OpenSeadragon_View_Helper_Openseadragon extends Zend_View_Helper_Abstract
     public function openseadragon($item)
     {
         // Check for valid Flickr data.
-		if (metadata($item, array('Item Type Metadata', 'Flickr URL\'s'))) {
-            $flickr_urls = metadata($item, array('Item Type Metadata', 'Flickr URL\'s'));
-			$flickr_urls = json_decode(html_entity_decode($flickr_urls), true);
+		if (($record_name = metadata($item, array('Item Type Metadata', 'Record Name'))) && ($record_id = metadata($item, array('Item Type Metadata', 'Record ID'))) && ($width = metadata($item, array('Item Type Metadata', 'width'))) && ($height = metadata($item, array('Item Type Metadata', 'height')))) {
         }
 
         // Return if there are no valid Flickr data.
@@ -37,7 +35,7 @@ class OpenSeadragon_View_Helper_Openseadragon extends Zend_View_Helper_Abstract
         }
 
         return $this->view->partial('common/openseadragon.php', array(
-            'flickr_urls' => $flickr_urls
+            'record_name' => $record_name, 'record_id' => $record_id, 'width' => $width, 'height' => $height
         ));
     }
 }

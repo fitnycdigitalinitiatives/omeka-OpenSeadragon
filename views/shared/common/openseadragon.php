@@ -13,7 +13,7 @@
 				controlsFadeDelay: 1000,
 				tileSources: {
 					type: 'legacy-image-pyramid',
-					levels:<?php echo openseadragon_create_flickr_pyramid($flickr_urls); ?>
+					levels:<?php echo openseadragon_create_mdid_pyramid($record_name, $record_id, $width, $height); ?>
 				}
 			});
 		</script>

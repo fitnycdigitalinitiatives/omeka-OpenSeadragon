@@ -7,17 +7,14 @@
  * @license http://www.gnu.org/licenses/gpl-3.0.txt GNU GPLv3
  */
 
-function openseadragon_create_flickr_pyramid($flickr_urls)
+function openseadragon_create_mdid_pyramid($record_name, $record_id, $width, $height)
 {
     $sizes = array('Medium', 'Large', 'Original');
     $pyramid = array();
 	$count = count($flickr_urls);
-    for ($x = 1; $x <= 3; $x++) {
-		$index = $count - $x;
-		$url = array('url' => $flickr_urls[$index]['source']);
-		$dimensions = array('height' => (int) $flickr_urls[$index]['height'], 'width' => (int) $flickr_urls[$index]['width']);
-		$pyramid[] = $url + $dimensions;
-    }
+	$url = 'https://fit.vrchost.com/media/get/' . $record_id . '/' . $record_name . '/';
+	$dimensions = array('height' => (int) $height, 'width' => (int) $width);
+	$pyramid[] = $url + $dimensions;
     return json_encode($pyramid);
 }
 
