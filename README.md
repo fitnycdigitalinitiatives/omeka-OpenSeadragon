@@ -1,6 +1,17 @@
 OpenSeadragon plugin for Omeka
 ===
 
+**!!MDID Compatibility!!**
+
+If upgrading the underlying Open Seadragon js file be sure to remove the following line of code so that it is compatible with MDID, which does not have file extensions in the url for images (thus will break Seadragon):
+
+`&& (
+                file.url.toLowerCase().match(/^.*\.(png|jpg|jpeg|gif)(?:\?.*)?$/) || (
+                    file.mimetype &&
+                    file.mimetype.toLowerCase().match(/^.*\/(png|jpg|jpeg|gif)$/)
+                )
+            )`
+
 This is a plugin for [Omeka](http://omeka.org/) 2.x that adds an zoomable
 image viewer provided by [OpenSeadragon](http://openseadragon.github.io),
 usable on item pages, exhibits, and the Omeka admin dashboard.
