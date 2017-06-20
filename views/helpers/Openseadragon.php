@@ -27,11 +27,11 @@ class OpenSeadragon_View_Helper_Openseadragon extends Zend_View_Helper_Abstract
     {
       if ($record_id = metadata($item, array('Item Type Metadata', 'Record ID'), array('all' => true))) {
         $arrlength = count($record_id);
-        for ($x = 0; $x < $arrlength; $x++) {
+        for ($x = 0; $x <= $arrlength; $x++) {
           echo $x;
           echo 'This is working!';
           // Check for valid MDID data.
-      		if (($record_name = metadata($item, array('Item Type Metadata', 'Record Name'), array('index' => 5))) && ($record_id = metadata($item, array('Item Type Metadata', 'Record ID'), array('index' => 5))) && ($width = metadata($item, array('Item Type Metadata', 'Width'), array('index' => 5))) && ($height = metadata($item, array('Item Type Metadata', 'Height'), array('index' => 5)))) {
+      		if (($record_name = metadata($item, array('Item Type Metadata', 'Record Name'), array('index' => $x))) && ($record_id = metadata($item, array('Item Type Metadata', 'Record ID'), array('index' => $x))) && ($width = metadata($item, array('Item Type Metadata', 'Width'), array('index' => $x))) && ($height = metadata($item, array('Item Type Metadata', 'Height'), array('index' => $x)))) {
             echo $record_id;
             return $this->view->partial('common/openseadragon.php', array(
                 'record_name' => $record_name, 'record_id' => $record_id, 'width' => $width, 'height' => $height
