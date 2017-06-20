@@ -27,6 +27,7 @@ class OpenSeadragon_View_Helper_Openseadragon extends Zend_View_Helper_Abstract
     {
       if ($record_id = metadata($item, array('Item Type Metadata', 'Record ID'), array('all' => true))) {
         $arrlength = count($record_id);
+        echo $arrlength;
         for($x = 0; $x < $arrlength; $x++) {
               // Check for valid MDID data.
       		if (($record_name = metadata($item, array('Item Type Metadata', 'Record Name'), array('index' => $x))) && ($record_id = metadata($item, array('Item Type Metadata', 'Record ID'), array('index' => $x))) && ($width = metadata($item, array('Item Type Metadata', 'Width'), array('index' => $x))) && ($height = metadata($item, array('Item Type Metadata', 'Height'), array('index' => $x)))) {
