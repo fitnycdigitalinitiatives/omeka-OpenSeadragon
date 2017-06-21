@@ -25,21 +25,15 @@ class OpenSeadragon_View_Helper_Openseadragon extends Zend_View_Helper_Abstract
      */
     public function openseadragon($item)
     {
-      if ($record_id = metadata($item, array('Item Type Metadata', 'Record ID'), array('all' => true))) {
-        $arrlength = count($record_id);
-        for ($x = 0; $x < $arrlength; $x++) {
-          // Check for valid MDID data.
-      		if (($record_name = metadata($item, array('Item Type Metadata', 'Record Name'), array('index' => $x))) && ($record_id = metadata($item, array('Item Type Metadata', 'Record ID'), array('index' => $x))) && ($width = metadata($item, array('Item Type Metadata', 'Width'), array('index' => $x))) && ($height = metadata($item, array('Item Type Metadata', 'Height'), array('index' => $x)))) {
-            echo $this->view->partial('common/openseadragon.php', array(
-                'record_name' => $record_name, 'record_id' => $record_id, 'width' => $width, 'height' => $height
-            ));
-          }
-
-          // Return if there are no valid MDID data.
-          else {
-              return;
-          }
-        }
+      // Check for valid Flickr data.
+  		if (($record_name = metadata($item, array('Item Type Metadata', 'Record Name'))) && ($record_id = metadata($item, array('Item Type Metadata', 'Record ID'))) && ($width = metadata($item, array('Item Type Metadata', 'Width'))) && ($height = metadata($item, array('Item Type Metadata', 'Height')))) {
+        return $this->view->partial('common/openseadragon.php', array(
+            'record_name' => $record_name, 'record_id' => $record_id, 'width' => $width, 'height' => $height
+        ));
+      }
+      // Return if there are no valid Flickr data.
+      else {
+        return;
       }
     }
 }
