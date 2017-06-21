@@ -9,40 +9,34 @@
 
 function openseadragon_create_mdid_pyramid($record_name, $record_id, $width, $height)
 {
-  $arrlength = count($record_id);
-  if ($arrlength < 1) {
-    $record_name = $record_name[0];
-    $record_id = $record_id[0];
-    $width = $width[0];
-    $height = $height[0];
+    $sizes = array('Medium', 'Large', 'Original');
     $pyramid = array();
-  	$url = array('url' => 'https://fitdil.fitnyc.edu/media/get/' . $record_id . '/' . $record_name . '/');
-  	$dimensions = array('height' => (int) $height, 'width' => (int) $width);
-  	$height_1 = ceil(($height * 2) / 3);
-  	$width_1 = ceil(($width * 2) / 3);
-  	$dimensions_1 = array('height' => (int) $height_1, 'width' => (int) $width_1);
-  	$url_1 = array('url' => 'https://fitdil.fitnyc.edu/media/get/' . $record_id . '/' . $record_name . '/' . $width_1 . 'x' . $height_1 . '/');
-  	$height_2 = ceil($height / 3);
-  	$width_2 = ceil($width / 3);
-  	$dimensions_2 = array('height' => (int) $height_2, 'width' => (int) $width_2);
-  	$url_2 = array('url' => 'https://fitdil.fitnyc.edu/media/get/' . $record_id . '/' . $record_name . '/' . $width_2 . 'x' . $height_2 . '/');
-    // Get 400x400 image which is cached from browse page //
-    if ($height >= $width) {
-      $height_3 = 400;
-      $width_3 = floor(($width * 400) / $height);
-    }
-    else {
-      $width_3 = 400;
-      $height_3 = floor(($height * 400) / $width);
-    }
-  	$dimensions_3 = array('height' => (int) $height_3, 'width' => (int) $width_3);
-  	$url_3 = array('url' => 'https://fitdil.fitnyc.edu/media/get/' . $record_id . '/' . $record_name . '/400x400/');
-  	$pyramid[] = $url_3 + $dimensions_3;
-    $pyramid[] = $url_2 + $dimensions_2;
-    $pyramid[] = $url_1 + $dimensions_1;
-    $pyramid[] = $url + $dimensions;
-    return json_encode($pyramid);
+	$url = array('url' => 'https://fitdil.fitnyc.edu/media/get/' . $record_id . '/' . $record_name . '/');
+	$dimensions = array('height' => (int) $height, 'width' => (int) $width);
+	$height_1 = ceil(($height * 2) / 3);
+	$width_1 = ceil(($width * 2) / 3);
+	$dimensions_1 = array('height' => (int) $height_1, 'width' => (int) $width_1);
+	$url_1 = array('url' => 'https://fitdil.fitnyc.edu/media/get/' . $record_id . '/' . $record_name . '/' . $width_1 . 'x' . $height_1 . '/');
+	$height_2 = ceil($height / 3);
+	$width_2 = ceil($width / 3);
+	$dimensions_2 = array('height' => (int) $height_2, 'width' => (int) $width_2);
+	$url_2 = array('url' => 'https://fitdil.fitnyc.edu/media/get/' . $record_id . '/' . $record_name . '/' . $width_2 . 'x' . $height_2 . '/');
+  // Get 400x400 image which is cached from browse page //
+  if ($height >= $width) {
+    $height_3 = 400;
+    $width_3 = floor(($width * 400) / $height);
   }
+  else {
+    $width_3 = 400;
+    $height_3 = floor(($height * 400) / $width);
+  }
+	$dimensions_3 = array('height' => (int) $height_3, 'width' => (int) $width_3);
+	$url_3 = array('url' => 'https://fitdil.fitnyc.edu/media/get/' . $record_id . '/' . $record_name . '/400x400/');
+	$pyramid[] = $url_3 + $dimensions_3;
+  $pyramid[] = $url_2 + $dimensions_2;
+  $pyramid[] = $url_1 + $dimensions_1;
+  $pyramid[] = $url + $dimensions;
+    return json_encode($pyramid);
 }
 
 function openseadragon_create_pyramid($image)
