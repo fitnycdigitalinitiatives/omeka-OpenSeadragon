@@ -39,7 +39,7 @@ function openseadragon_create_mdid_pyramid($record_name, $record_id, $width, $he
 }
 function openseadragon_create_mdid_collection($record_name, $record_id, $width, $height)
 {
-  echo 'Im sorta working!'
+  echo 'Im sorta working!';
 }
 
 function openseadragon_create_pyramid($image)
