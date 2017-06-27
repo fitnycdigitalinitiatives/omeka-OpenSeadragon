@@ -43,8 +43,8 @@ function openseadragon_create_mdid_collection($record_name, $record_id, $width, 
   $arrlength = count($record_id);
   for ($x = 0; $x < $arrlength; $x++) {
     if (($record_name = metadata($item, array('Item Type Metadata', 'Record Name'), array('index' => $x))) && ($record_id = metadata($item, array('Item Type Metadata', 'Record ID'), array('index' => $x))) && ($width = metadata($item, array('Item Type Metadata', 'Width'), array('index' => $x))) && ($height = metadata($item, array('Item Type Metadata', 'Height'), array('index' => $x)))) {
-      $type = array('type' => , 'legacy-image-pyramid');
-      $levels = array('levels' => , openseadragon_create_mdid_pyramid($record_name, $record_id, $width, $height));
+      $type = array('type' => 'legacy-image-pyramid');
+      $levels = array('levels' => openseadragon_create_mdid_pyramid($record_name, $record_id, $width, $height));
       $tilesource[] = $type + $levels;
     }
   }
