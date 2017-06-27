@@ -26,9 +26,9 @@ class OpenSeadragon_View_Helper_Openseadragon extends Zend_View_Helper_Abstract
     public function openseadragon($item)
     {
       // Check for valid Flickr data.
-  		if ((metadata($item, array('Item Type Metadata', 'Record Name'))) && (metadata($item, array('Item Type Metadata', 'Record ID'))) && (metadata($item, array('Item Type Metadata', 'Width'))) && (metadata($item, array('Item Type Metadata', 'Height')))) {
+  		if (($record_name = metadata($item, array('Item Type Metadata', 'Record Name'))) && ($record_id = metadata($item, array('Item Type Metadata', 'Record ID'))) && ($width = metadata($item, array('Item Type Metadata', 'Width'))) && ($height = metadata($item, array('Item Type Metadata', 'Height')))) {
         return $this->view->partial('common/openseadragon.php', array(
-            'item' => $item
+            'record_name' => $record_name, 'record_id' => $record_id, 'width' => $width, 'height' => $height
         ));
       }
       // Return if there are no valid Flickr data.
