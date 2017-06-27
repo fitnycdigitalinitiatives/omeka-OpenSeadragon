@@ -9,6 +9,8 @@
 				showNavigator: true,
 				collectionMode: true,
 				collectionRows: 1,
+				collectionTileSize: 1024,
+				collectionTileMargin: 256,
 				navigatorSizeRatio: 0.1,
 				minZoomImageRatio: 0.8,
 				maxZoomPixelRatio: 10,
