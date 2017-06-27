@@ -8,7 +8,7 @@
 				prefixUrl: "<?php echo $button_path; ?>",
 				sequenceMode: true,
 				showReferenceStrip: true,
-				referenceStripSizeRatio: 0.1,
+				referenceStripSizeRatio: 0.05,
 				minZoomImageRatio: 0.8,
 				maxZoomPixelRatio: 10,
 				controlsFadeDelay: 1000,
