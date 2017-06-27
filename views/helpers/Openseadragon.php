@@ -38,8 +38,8 @@ class OpenSeadragon_View_Helper_Openseadragon extends Zend_View_Helper_Abstract
           for ($x = 0; $x < $arrlength; $x++) {
             if (($record_name[$x]) && ($record_id[$x]) && ($width[$x]) && ($height[$x])) {
               $type = array('type' => 'legacy-image-pyramid');
-              $levels = array('levels' => openseadragon_create_mdid_pyramid($record_name[$x], $record_id[$x], $width[$x], $height[$x]));
-              $tilesource[] = $type + json_decode($levels, true);
+              $levels = array('levels' => json_decode(openseadragon_create_mdid_pyramid($record_name[$x], $record_id[$x], $width[$x], $height[$x]), true));
+              $tilesource[] = $type + $levels;
             }
           }
           return $this->view->partial('common/openseadragon_collection.php', array(
