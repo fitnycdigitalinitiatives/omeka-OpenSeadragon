@@ -49,7 +49,7 @@ function openseadragon_create_mdid_collection($record_name, $record_id, $width, 
     }
   }
   return $this->view->partial('common/openseadragon_collection.php', array(
-      'tilesource' => $tilesource
+      'tilesource' => json_encode($tilesource)
   ));
 }
 
