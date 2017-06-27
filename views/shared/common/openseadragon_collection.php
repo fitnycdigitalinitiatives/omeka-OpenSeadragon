@@ -6,9 +6,9 @@
 			OpenSeadragon({
 				id: "<?php echo $unique_id; ?>",
 				prefixUrl: "<?php echo $button_path; ?>",
-				showNavigator: true,
-				collectionMode: true,
-				collectionRows: 1,
+				sequenceMode: true,
+				showReferenceStrip: true,
+				referenceStripScroll: 'vertical',
 				navigatorSizeRatio: 0.1,
 				minZoomImageRatio: 0.8,
 				maxZoomPixelRatio: 10,
