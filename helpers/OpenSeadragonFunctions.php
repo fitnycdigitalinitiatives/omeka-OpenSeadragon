@@ -49,6 +49,9 @@ function openseadragon_create_mdid_collection($record_name, $record_id, $width, 
     }
   }
   return json_encode($tilesource);
+  return $this->view->partial('common/openseadragon_collection.php', array(
+      'tilesource' => $tilesource
+  ));
 }
 
 function openseadragon_create_pyramid($image)
