@@ -8,8 +8,6 @@
 				prefixUrl: "<?php echo $button_path; ?>",
 				sequenceMode: true,
 				showReferenceStrip: true,
-				referenceStripScroll: 'vertical',
-				navigatorSizeRatio: 0.1,
 				minZoomImageRatio: 0.8,
 				maxZoomPixelRatio: 10,
 				controlsFadeDelay: 1000,
