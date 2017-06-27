@@ -10,7 +10,7 @@
 				collectionMode: true,
 				collectionRows: 1,
 				collectionTileSize: 1024,
-				collectionTileMargin: 75,
+				collectionTileMargin: 0,
 				navigatorSizeRatio: 0.1,
 				minZoomImageRatio: 0.8,
 				maxZoomPixelRatio: 10,
