@@ -9,8 +9,7 @@
 
 function openseadragon_create_mdid_pyramid($record_name, $record_id, $width, $height)
 {
-    $sizes = array('Medium', 'Large', 'Original');
-    $pyramid = array();
+  $pyramid = array();
 	$url = array('url' => 'https://fitdil.fitnyc.edu/media/get/' . $record_id . '/' . $record_name . '/');
 	$dimensions = array('height' => (int) $height, 'width' => (int) $width);
 	$height_1 = ceil(($height * 2) / 3);
