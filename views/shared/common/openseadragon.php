@@ -1,5 +1,5 @@
 <?php $button_path = src('images/', 'openseadragon');?>
-<?php $unique_id = "openseadragon_".hash("md4", html_escape($record_name)); ?>
+<?php $unique_id = "openseadragon_".hash("md4", html_escape(metadata($item, array('Item Type Metadata', 'Record Name')))); ?>
 <div class="openseadragon-frame">
 	<div class="openseadragon" id="<?php echo $unique_id; ?>">
 		<script type="text/javascript">
