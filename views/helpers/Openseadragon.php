@@ -33,7 +33,7 @@ class OpenSeadragon_View_Helper_Openseadragon extends Zend_View_Helper_Abstract
           ));
         }
         elseif (count($record_name) > 1) {
-          return;
+          return openseadragon_create_mdid_collection($record_name, $record_id, $width, $height);
         }
       }
       // Return if there are no valid Flickr data.

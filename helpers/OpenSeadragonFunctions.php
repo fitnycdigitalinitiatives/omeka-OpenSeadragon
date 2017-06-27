@@ -37,6 +37,10 @@ function openseadragon_create_mdid_pyramid($record_name, $record_id, $width, $he
   $pyramid[] = $url + $dimensions;
   return json_encode($pyramid);
 }
+function openseadragon_create_mdid_collection($record_name, $record_id, $width, $height)
+{
+  echo 'Im sorta working!'
+}
 
 function openseadragon_create_pyramid($image)
 {
