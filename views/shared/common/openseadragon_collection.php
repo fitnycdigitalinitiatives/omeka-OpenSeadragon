@@ -8,7 +8,7 @@
 				prefixUrl: "<?php echo $button_path; ?>",
 				showNavigator: true,
 				collectionMode: true,
-    		collectionRows: 1,
+				collectionRows: 1,
 				navigatorSizeRatio: 0.1,
 				minZoomImageRatio: 0.8,
 				maxZoomPixelRatio: 10,

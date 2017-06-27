@@ -43,7 +43,7 @@ class OpenSeadragon_View_Helper_Openseadragon extends Zend_View_Helper_Abstract
             }
           }
           return $this->view->partial('common/openseadragon_collection.php', array(
-              'tilesource' => json_encode($tilesource)
+              'tilesource' => json_encode($tilesource), 'record_name' => $record_name[0]
           ));
         }
       }
