@@ -12,25 +12,30 @@ function openseadragon_create_mdid_pyramid($record_name, $record_id, $width, $he
   $pyramid = array();
 	$url = array('url' => 'https://fitdil.fitnyc.edu/media/get/' . $record_id . '/' . $record_name . '/');
 	$dimensions = array('height' => (int) $height, 'width' => (int) $width);
-	$height_1 = ceil(($height * 2) / 3);
-	$width_1 = ceil(($width * 2) / 3);
+	$height_1 = ceil(($height * 3) / 4);
+	$width_1 = ceil(($width * 3) / 4);
 	$dimensions_1 = array('height' => (int) $height_1, 'width' => (int) $width_1);
 	$url_1 = array('url' => 'https://fitdil.fitnyc.edu/media/get/' . $record_id . '/' . $record_name . '/' . $width_1 . 'x' . $height_1 . '/');
-	$height_2 = ceil($height / 3);
-	$width_2 = ceil($width / 3);
+	$height_2 = ceil($height / 2);
+	$width_2 = ceil($width / 2);
 	$dimensions_2 = array('height' => (int) $height_2, 'width' => (int) $width_2);
 	$url_2 = array('url' => 'https://fitdil.fitnyc.edu/media/get/' . $record_id . '/' . $record_name . '/' . $width_2 . 'x' . $height_2 . '/');
+  $height_3 = ceil($height / 4);
+  $width_3 = ceil($width / 4);
+  $dimensions_3 = array('height' => (int) $height_3, 'width' => (int) $width_3);
+  $url_3 = array('url' => 'https://fitdil.fitnyc.edu/media/get/' . $record_id . '/' . $record_name . '/' . $width_3 . 'x' . $height_3 . '/');
   // Get 400x400 image which is cached from browse page //
   if ($height >= $width) {
-    $height_3 = 400;
-    $width_3 = floor(($width * 400) / $height);
+    $height_4 = 400;
+    $width_4 = floor(($width * 400) / $height);
   }
   else {
-    $width_3 = 400;
-    $height_3 = floor(($height * 400) / $width);
+    $width_4 = 400;
+    $height_4 = floor(($height * 400) / $width);
   }
-	$dimensions_3 = array('height' => (int) $height_3, 'width' => (int) $width_3);
-	$url_3 = array('url' => 'https://fitdil.fitnyc.edu/media/get/' . $record_id . '/' . $record_name . '/400x400/');
+	$dimensions_4 = array('height' => (int) $height_3, 'width' => (int) $width_3);
+	$url_4 = array('url' => 'https://fitdil.fitnyc.edu/media/get/' . $record_id . '/' . $record_name . '/400x400/');
+  $pyramid[] = $url_4 + $dimensions_4;
 	$pyramid[] = $url_3 + $dimensions_3;
   $pyramid[] = $url_2 + $dimensions_2;
   $pyramid[] = $url_1 + $dimensions_1;
